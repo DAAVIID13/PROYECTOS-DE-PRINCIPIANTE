@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador de tareas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Slab&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Organizador de tareas</h1>
+        <img src="src/logo.png" alt="logo de la pagima, simple decoracion">
+        <ul>
+            <li><button>Agregar tarea</button></li>
+            <li><button id="botonCompleta">Marcar como completa</button></li>
+        </ul>
+    </header>
+    <main>
+        <section id="entragadaDatos">
+            <input type="text" id="entradaPendientes"/>
+            <input type="date" id="fechaPendientes"/>
+            <select id="importancia">
+                <option value="op1">Importancia</option>
+                <option value="op2">Baja</option>
+                <option value="op3">Media</option>
+                <option value="op4">Alta</option>
+                <option value="op5">Urgente</option>
+            </select>
+            <button id="botonAgregar">✔</button>
+        </section>
+        <label>Pendientes</label>
+        <section>
+            <table id="listaTareas">
+            </table>
+        </section>
+        <label>Completas</label>
+        <section>
+            <table id="listaTareasCom">
+                
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>Informacion de contacto</p>
+        <p id="numero"></p>
+        <p id="correo"></p>
+        <p id="linked"></p>
+    </footer>
+    <script src="codigo.js"></script>
+</body>
+</html>
