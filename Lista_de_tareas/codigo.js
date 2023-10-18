@@ -1,3 +1,10 @@
+//Conseguir Elemntos para trabajar con ellos
+
+//Parte de header
+let agregarTarea = document.getElementById("botonAgregar");
+let agregarCompleta = document.getElementById("botonCompleta");
+
+//Parte para agregar tareas
 let bandejaEntrada = document.getElementById("entradaPendientes");
 
 let fechaEntrada = document.getElementById("fechaPendientes");
@@ -8,16 +15,15 @@ let dia = String(fechaActual.getDate()).padStart(2,'0');
 let fechaFormada = `${año}-${mes}-${dia}`;
 fechaEntrada.value = fechaFormada;
 
-let importanciaEntrada = document.getElementById("importancia")
+let importanciaEntrada = document.getElementById("importancia");
 
-let agregarTarea = document.getElementById("botonAgregar");
-let agregarCompleta = document.getElementById("botonCompleta");
-
+//parte de la lista de tareas
 let contenerPendientes = document.getElementById("listaTareas");
+
+//parte de tareas completas
 let contenerTareasComp= document.getElementById("listaTareasCom");
 
-fechaEntrada.value = fechaFormada;
-
+//funciones para agregar las tareas a la lista de tareas
 function agregarFila(){
   let a = bandejaEntrada.value.trim();
     let b = fechaEntrada.value;
@@ -28,6 +34,7 @@ function agregarFila(){
     caja.classList.add("casiCompleta");
 
     let borrar = document.createElement("button");
+    borrar.classList.add("identificadorBorrar")
     borrar.textContent = "✘";
     
     caja.type = "checkbox";
@@ -40,7 +47,7 @@ function agregarFila(){
 
 
     celda1.appendChild(caja);
-    celda1.add
+    celda1.add;
     celda2.innerHTML = a;
     celda3.innerHTML = b;
     celda4.innerHTML = c;
@@ -49,18 +56,40 @@ function agregarFila(){
     bandejaEntrada.value="";
 }
 
+
+//funciones de evento
+
+//esta funcion sirve para agregar la tarea cuando el focus esta en la bandeja de texto y no está vacia
 bandejaEntrada.addEventListener("keydown",function(e) {
   if(e.key === "Enter"){
-    if (bandejaEntrada.value="") {
-      alert('¿?')
+    if (bandejaEntrada.value != "") {
+      agregarFila();
+    }else{
+      alert('Campo de tarea vacio');
     }
   }
 });
-
+//esto es para agragarla por medio de la paloma
 agregarTarea.addEventListener("click",function(e){
-  agregarFila();
-})
+  if (bandejaEntrada.value != "") {
+    agregarFila();
+  }else{
+    alert('Campo de tarea vacio');
+  }
+});
 
-agregarCompleta.addEventListener("click",function(e){
-  agregarFila();
-})
+document.getElementById("listaTareas").addEventListener("click", function(event) {
+  if (event.target && event.target.classList.contains("identificadorBorrar")) {
+    let fila = event.target.parentNode.parentNode;
+    fila.parentNode.removeChild(fila);
+  }
+});
+
+agregarCompleta.addEventListener("click",function (e){
+  let filas = document.querySelectorAll("#listaTareas .casiCompleta:checked");
+
+  filas.forEach(function(checkbox){
+    let fila = checkbox.parentNode.parentNode;
+    contenerTareasComp.appendChild(fila);
+  });
+});
