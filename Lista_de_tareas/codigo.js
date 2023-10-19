@@ -1,11 +1,13 @@
 //Conseguir Elemntos para trabajar con ellos
 
 //Parte de header
-let agregarTarea = document.getElementById("botonAgregar");
 let agregarCompleta = document.getElementById("botonCompleta");
+let vaciasTareas = document.getElementById("Vaciar");
+
 
 //Parte para agregar tareas
 let bandejaEntrada = document.getElementById("entradaPendientes");
+let agregarTarea = document.getElementById("botonAgregar");
 
 let fechaEntrada = document.getElementById("fechaPendientes");
 let fechaActual = new Date();
@@ -91,5 +93,32 @@ agregarCompleta.addEventListener("click",function (e){
   filas.forEach(function(checkbox){
     let fila = checkbox.parentNode.parentNode;
     contenerTareasComp.appendChild(fila);
+
+    let celdas = fila.querySelectorAll("td");
+    for (let i = 0; i < celdas.length; i++) {
+      if (i !== 1) {
+        fila.removeChild(celdas[i]);
+      }
+    }
   });
+});
+
+agregarCompleta.addEventListener("click",function (e){
+  let filas = document.querySelectorAll("#listaTareas .casiCompleta:checked");
+
+  filas.forEach(function(checkbox){
+    let fila = checkbox.parentNode.parentNode;
+    contenerTareasComp.appendChild(fila);
+
+    let celdas = fila.querySelectorAll("td");
+    for (let i = 0; i < celdas.length; i++) {
+      if (i !== 1) {
+        fila.removeChild(celdas[i]);
+      }
+    }
+  });
+});
+
+vaciasTareas.addEventListener("click",function (e) {
+  contenerTareasComp.innerHTML='';
 });

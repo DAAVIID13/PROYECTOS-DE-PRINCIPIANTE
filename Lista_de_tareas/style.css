@@ -45,14 +45,6 @@ main{
     margin: 1rem;
 }
 
-table *{
-    border: 2px solid black;
-}
-
-#entragadaDatos{
-    border: 2px solid black;
-    margin: 1rem;
-}
 
 #entragadaDatos input{
     margin: auto 5%;
@@ -60,8 +52,3 @@ table *{
     
 }
 /*Parte de pie de pagina*/
-footer{
-    border: 2px solid red;
-    margin: 1rem;
-}
-
